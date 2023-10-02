@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Climbunity - Find a climbing partner!</h1>
+
+<p><em>Get out and add to your tick list!</em></p>
+{% if all_venues %}
+    <h2>Today's top venues:</h2>
+    {% for venue in all_venues %}
+        <div class="venue">
+            <a href="/venue/{{ venue.id }}">{{ venue.name }}</a> - Number of tracked routes: {{ routes | selectattr('venue_id', 'equalto', venue.id) | list | length }}
+            <p><strong>Address:</strong> {{ venue.address }}</p>
+            {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                <form method="POST" action="/delete_venue/{{ venue.id }}">
+                    <input type="submit" class="delete" value="Delete venue">
+                </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>There are no venues yet. You should {% if not current_user.is_authenticated %}sign up and {% endif %}add some!</p>
+{% endif %}
+
+{% endblock %}

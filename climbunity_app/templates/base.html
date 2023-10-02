@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Climbunity</title>
+        <link rel="icon" href="../static/img/favicon.ico" />
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img class="header-image" src="../static/img/logo-no-background.png" />
+        <div id="content">
+            {% include 'partials/nav_buttons_partial.html' %}
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

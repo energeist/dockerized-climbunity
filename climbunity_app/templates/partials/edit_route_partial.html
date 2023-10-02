@@ -1,0 +1,13 @@
+<h2>Edit route details</h2>
+
+<form method="POST" action="{{ url_for('main.route_detail', route_id=route.id) }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        {% include 'partials/route_form_partial.html' %}
+    </fieldset>
+</form>
+{% if current_user.is_authenticated %}
+    <form method="POST" action="/delete_route/{{ route.id }}">
+        <input type="submit" class="delete" value="Delete route">
+    </form>
+{% endif %}

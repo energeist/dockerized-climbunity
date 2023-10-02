@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Route</h1>
+
+<form method="POST" action="{{ url_for('main.new_route') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter information for this route:</legend>
+        {% include 'partials/route_form_partial.html' %}
+    </fieldset>
+</form>
+
+{% endblock %}

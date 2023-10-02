@@ -1,0 +1,46 @@
+<h2>Current Projects</h2>
+
+{% if user.user_projects %}
+    {% for route in user.user_projects%}
+        <div>{{ route.name }} - {{ route.grade }}
+            {% if user == current_user %}
+                <form style="display: inline;" method="POST" action="/remove_from_project_list/{{ route.id }}">
+                    <input style="margin: 0; padding: 0;" type="submit" value="remove from list"/>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No projects are currently being tracked.</p>
+{% endif %}
+
+<h2>Recent Ascents</h2>
+{% if ascents %}
+    <div>
+        {% for ascent in ascents %}
+            <p>{{ ascent.send_date }} - <a href="/route/{{ ascent.route_id }}" > 
+                {% for route in routes %}
+                    {% if route.id == ascent.route_id %}
+                        {{ route.name }}
+                    {% endif %}
+                {% endfor %}</a></p>
+            {% if ascent.send_rating %}
+                <p>Rating: {{ ascent.send_rating }}/5</p> 
+            {% endif %}
+            {% if ascent.send_comments %}
+                <p>Comments: {{ ascent.send_comments }}</p>
+            {% endif %}
+            {% if user == current_user %}
+            <form method="POST" action="/delete_ascent/{{ ascent.id }}">
+                <input type="submit" class="delete" value="Delete ascent">
+            </form>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    {% if current_user.id == user.id %}
+        You haven't logged any ascents yet!
+    {% else %}
+        {{ user.first_name }} {{ user.last_name }} has not logged any ascents yet!
+    {% endif %}  
+{% endif %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Climbing Venue</h1>
+
+<form method="POST" action="{{ url_for('main.new_venue') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please the information for this climbing venue:</legend>
+        {{ form.name.label }}
+        {{ form.name }}
+        <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.address.label }}
+        {{ form.address(placeholder="123 Road St, Townsville, State, Nice Country, A1A1A1") }}
+        <ul>
+        {% for error in form.address.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.open_hours.label }}
+        {{ form.open_hours }}
+        <ul>
+        {% for error in form.open_hours.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.description.label }}
+        {{ form.description }}
+        <ul>
+        {% for error in form.description.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

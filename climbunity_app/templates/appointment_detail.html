@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Appointment</h1>
+
+<form method="POST" action="{{ url_for('main.new_appointment') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter information for this appointment:</legend>
+        {{ form.appointment_date.label }}
+        {{ form.appointment_date }}
+        <ul>
+        {% for error in form.date.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

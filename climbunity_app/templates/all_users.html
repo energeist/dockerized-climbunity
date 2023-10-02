@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Climbunity Users</h1>
+
+{% for user in users %}
+<div class="user">
+    <a href="/profile/{{ user.id }}">{{ user.username }}</a> - 
+    {% if user.user_does_styles %}
+    <p><strong>Climbing styles:</strong></p>
+        <ul>
+        {% for style in user.user_does_styles %}
+            <li>{{ style }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}

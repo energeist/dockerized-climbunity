@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> {{ user.username }}'s Profile</h1>
+<p><strong>Name: </strong> {{ user.first_name }} {{ user.last_name }}</p>
+<p><strong>Address: </strong> {{ user.address }}</p>
+<h2>Climbing Styles</h2>
+
+{% if user.user_does_styles %}
+    <ul>
+        {% for style in user.user_does_styles %}
+            <li>{{ style }}</li>    
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if user.has_gear %}
+    <p>{{ user.username }} has their own climbing gear.</p>
+{% else %}
+    <p>{{ user.username }} does not have their own climbing gear.</p>
+{% endif %}
+
+{% include 'partials/projects_ascents_partial.html' %}
+
+{% include 'partials/appointments_partial.html' %}
+
+{% if user == current_user %}
+    {% include 'partials/edit_profile_partial.html' %}
+{% endif %}
+
+{% endblock %}

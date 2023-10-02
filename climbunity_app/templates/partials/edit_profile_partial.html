@@ -1,0 +1,45 @@
+<h2>Edit your information</h2>
+<form action="/edit_profile/{{ current_user.id }}" method="POST">
+    {{ form.csrf_token }}
+    <fieldset>
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+        <ul>
+        {% for error in form.first_name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+        <ul>
+        {% for error in form.last_name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.address.label }}
+        {{ form.address }}
+        <ul>
+        {% for error in form.address.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.climber_styles.label }}
+        {{ form.climber_styles }}
+        <ul>
+        {% for error in form.climber_styles.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.has_gear.label }}
+        {{ form.has_gear }}
+        <ul>
+        {% for error in form.has_gear.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.edit }}
+    </fieldset>
+</form>

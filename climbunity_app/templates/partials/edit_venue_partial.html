@@ -1,0 +1,27 @@
+<h2>Edit Venue</h2>
+
+<form method="POST" action="{{ url_for('main.venue_detail', venue_id=venue.id) }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        {{ form.name.label }}
+        {{ form.name }}
+        
+        {{ form.address.label }}
+        {{ form.address }}
+
+        {{ form.open_hours.label }}
+        {{ form.open_hours }}
+        
+        {{ form.description.label }}
+        {{ form.description }}
+
+        {{ form.submit }}
+    </fieldset>
+</form>
+{% if current_user.is_authenticated %}
+    {% if current_user.is_admin %}
+        <form method="POST" action="/delete_venue/{{ venue.id }}">
+            <input type="submit" class="delete" value="Delete venue">
+        </form>
+    {% endif %}
+{% endif %}

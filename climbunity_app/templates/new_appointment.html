@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Appointment</h1>
+
+<form method="POST" action="{{ url_for('main.new_appointment') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter information for this appointment:</legend>
+        {{ form.appointment_datetime.label }}
+        {{ form.appointment_datetime }}
+        <ul>
+        {% for error in form.appointment_datetime.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.venue_id.label }}
+        {{ form.venue_id }}
+        <ul>
+        {% for error in form.venue_id.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ form.additional_guests.label }}
+        {{ form.additional_guests }}
+        <ul>
+        {% for error in form.additional_guests.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

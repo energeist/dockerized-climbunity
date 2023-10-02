@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Log an ascent of {{ route.name }}</h1>
+
+<form method="POST" action="/log_ascent/{{ route.id }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Ascent details:</legend>
+        <p>{{ route.name }} - {{ route.grade }} @ {{ venue.name }}</p>
+        {{ form.ascent_date.label }}
+        {{ form.ascent_date }}
+        <ul>
+        {% for error in form.ascent_date.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.ascent_type.label }}
+        {{ form.ascent_type }}
+        <ul>
+        {% for error in form.ascent_type.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.rating.label }}
+        {{ form.rating }}
+        <ul>
+        {% for error in form.rating.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.comments.label }}
+        {{ form.comments }}
+        <ul>
+            {% for error in form.comments.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.submit }} 
+    </fieldset>
+</form>
+
+{% endblock %}

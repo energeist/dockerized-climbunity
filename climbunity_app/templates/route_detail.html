@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Route - {{ route.name }}</h1>
+
+    {% if route.photo_url %}
+        <p><img src="{{ route.photo_url }}" width="250px" height="250px"></p>    
+    {% endif %}
+    <div class="route-container">
+        <div class="route-info">
+            <p><strong>Venue:</strong> <a href="/venue/{{ route_venue.id }}">{{ route_venue }}</a></p>
+
+            <p><strong>Grade:</strong> {{ route.grade }}</p>
+
+            <p><strong>Set Date:</strong> {{ route.route_set_date }}</p>
+
+            <p><strong>Takedown Date:</strong> {{ route.route_takedown_date }}</p>
+
+            <p><strong>Route set by user:</strong> {{ setter }}</p>
+
+            <p><strong>Route styles:</strong></p> 
+            <ul>
+                {% for style in route.possible_route_styles %}
+                    <li>{{ style }}</li>
+                {% endfor %}
+            </ul>
+
+            <p><strong>Route technical tags:</strong></p>
+            <ul>
+                {% for tag in route.route_tags %}
+                    <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="route-social">
+            {% if route.ascents_on_route %}
+                <p><strong>Recent comments about this route:</strong></p>
+                <ul>
+                    {% for ascent in route.ascents_on_route %}
+                        {% if ascent.send_comments %}
+                            <li>{{ ascent.send_comments }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Average rating: {{ rating }}</p>
+            {% else %}
+                <p>No comments yet... Log an ascent and leave some comments!</p>
+            {% endif %}
+        </div>
+    </div>
+    {% if current_user.is_authenticated %}
+        {% include 'partials/project_ascent_buttons_partial.html' %}
+        {% include 'partials/edit_route_partial.html' %}
+    {% endif %}
+
+{% endblock %}

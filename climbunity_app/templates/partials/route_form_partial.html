@@ -1,0 +1,73 @@
+<ul>
+    {% for error in form.name.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.name.label }}
+{{ form.name }}
+
+<ul>
+    {% for error in form.venue_id.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.venue_id.label }}
+{{ form.venue_id }}
+
+<ul>
+    {% for error in form.setter_id.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.setter_id.label }}
+{{ form.setter_id }}
+
+<ul>
+    {% for error in form.grade.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.grade.label }}
+{{ form.grade }}
+
+<ul>
+    {% for error in form.route_styles.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.route_styles.label }}
+{{ form.route_styles }}
+
+<ul>
+    {% for error in form.route_tags.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.route_tags.label }}
+{{ form.route_tags }}
+
+<ul>
+    {% for error in form.photo_url.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.photo_url.label }}
+{{ form.photo_url }}
+
+<ul>
+    {% for error in form.route_set_date.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.route_set_date.label }}
+{{ form.route_set_date }}
+
+<ul>
+    {% for error in form.route_takedown_date.errors %}
+        <li class="error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{{ form.route_takedown_date.label }}
+{{ form.route_takedown_date }}
+
+{{ form.submit }}

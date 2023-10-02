@@ -1,0 +1,45 @@
+{% if user == current_user %}
+    <h2>Your Upcoming Appointments</h2>
+    {% if user.user_appointments %}
+        <div>
+            {% for appointment in user.user_appointments %}
+                <p>{{ appointment.appointment_datetime }} @ <a href="/venue/{{ appointment.venue_id }}" >
+                    {% for venue in venues %}
+                        {% if appointment.venue_id == venue.id %}
+                            {{ venue.name }}
+                        {% endif %}
+                    {% endfor %}
+                    </a></p>
+                {% if (appointment.created_by == current_user.id) or current_user.is_admin %}
+                    <form method="POST" action="/delete_appointment/{{ appointment.id }}">
+                        <input type="submit" class="delete" value="Delete appointment">
+                    </form>
+                {% endif %}   
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You have no appointments yet!</p>
+    {% endif %}
+{% else %}
+    <h2>{{ user.username }}'s Upcoming Appointments</h2>
+    {% if user.user_appointments %}
+    <div>
+        {% for appointment in user.user_appointments %}
+        <p>{{ appointment.appointment_datetime }} @ <a href="/venue/{{ appointment.venue_id }}" >
+            {% for venue in venues %}
+                {% if appointment.venue_id == venue.id %}
+                    {{ venue.name }}
+                {% endif %}
+            {% endfor %}
+            </a></p>
+            {% if current_user.is_authenticated %}
+                {% if appointment not in current_user.user_appointments %}
+                    <form method="POST" action="/join_appointment/{{ appointment.id }}">
+                        <input type="submit" value="Join Appointment!">
+                    </form></p>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>  
+    {% endif %}
+{% endif %}

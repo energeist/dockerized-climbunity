@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Venue - {{ venue.name }}</h1>
+
+<p><strong>Address / Location:</strong> {{ venue.address }}</p>
+
+<p><strong>Hours of Operation:</strong> {{ venue.open_hours }}</p>
+
+<p><strong>Description:</strong> {{ venue.description }}</p>
+
+<h2>Routes</h2>
+
+{% if routes %}
+    <div class="routes">
+        {% for route in routes %}
+        <div class="route-details">
+            <a href="/route/{{ route.id }}">
+            <p><strong>{{ route.name }}</strong></p></a>
+            <p><strong>Grade: {{ route.grade }}</strong></p>
+            {% if current_user.is_authenticated %}
+                {% include 'partials/project_ascent_buttons_partial.html' %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    There are no routes listed for this venue.  You should {% if not current_user.is_authenticated %}sign up and {% endif %}add some!
+{% endif %}
+
+{% if current_user.username %}
+    {% include 'partials/edit_venue_partial.html' %}
+{% endif %}
+
+{% endblock %}
