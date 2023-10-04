@@ -19,7 +19,7 @@ This application features User creation and authentication, CRUD routes for Venu
 - Clone this repository
 - Navigate to the cloned repository locally
 - With the Docker engine installed:
-  - Run `docker compose build && docker compose up -d` in your terminal, or `sudo docker compose build && sudo docker compose up -d` if you require sudo permissions.
+  - Run `docker compose up -d` in your terminal, or `sudo docker compose up -d` if you require sudo permissions.
 - Open the app either by clicking the link in your terminal, or by navigating to `localhost:5002/`
 - Create an account, set some routes and add to your tick list!
 
