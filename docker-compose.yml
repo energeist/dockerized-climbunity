@@ -3,7 +3,7 @@ version: '3'
 services:
   climbunity_app:
     container_name: climbunity_app
-    build: .
+    image: energeist/climbunity:1.0.0
     ports:
       - "5002:5002"
     environment:
