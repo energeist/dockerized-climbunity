@@ -8,7 +8,7 @@ from climbunity_app.models import *
 
 """
 Run these tests with the command:
-python -m unittest climbunity_app.main.tests
+python -m unittest app.main.tests
 ^^^ might not work, use
 python3 -m unittest discover instead (or this might just register zero tests because why not lol)
 """

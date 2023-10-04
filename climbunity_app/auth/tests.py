@@ -9,7 +9,7 @@ from climbunity_app.models import SendType, User, Style, Tag, Venue, Route, Asce
 
 """
 Run these tests with the command:
-python -m unittest climbunity_app.auth.tests
+python -m unittest app.auth.tests
 ^^^ might not work, use
 python3 -m unittest discover instead (or this might just register zero tests because why not lol)
 """

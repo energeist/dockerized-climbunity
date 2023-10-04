@@ -1,5 +1,4 @@
 bcrypt==3.2.0
-cffi==1.14.4
 click==7.1.2
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
@@ -17,4 +16,4 @@ Werkzeug==1.0.1
 WTForms==2.3.3
 gunicorn==20.1.0
 sqlalchemy_utils==0.40.0
-psycopg2==2.9.5
+psycopg2-binary==2.9.5
