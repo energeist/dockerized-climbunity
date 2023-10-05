@@ -6,7 +6,9 @@ Climbunity is a backend project created in Python using Flask, SQLAlchemy and Ji
 Containerized and [hosted on Docker Hub.](https://hub.docker.com/repository/docker/energeist/climbunity/general)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/energeist/climbunity)
 
-There is a live version [deployed here, on Caprover!](https://caprover-climbunity.dev.greatwith.tech/)
+Deployed on my personal webhost at [https://climbunity.greatwith.tech](climbunity.greatwith.tech) (Proxmox running a Ubuntu Server 22.04 VM)
+
+Deployed in the cloud, on Caprover, at [https://caprover-climbunity.dev.greatwith.tech/](https://caprover-climbunity.dev.greatwith.tech/)
 
 Uptime Status of the Climbunity deployment is [monitored by UptimeRobot](https://stats.uptimerobot.com/4jmZ3HYloO)
 ![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795415683-c484a4881d311338f5cb1c0d)
